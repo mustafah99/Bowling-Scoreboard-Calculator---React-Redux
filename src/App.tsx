@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
+import { AddScore } from "./features/scores/Score";
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   return (
-    <div className="App">
+    <div className="App grid place-items-center h-screen text-center">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="text-3xl font-bold">10 Pin Bowling Calculator</h1>
+        <p>Click on Score after each Bowl Thrown</p>
+        <AddScore />
       </header>
     </div>
   );
-}
+};
 
 export default App;
