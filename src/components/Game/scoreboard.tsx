@@ -1,12 +1,26 @@
+import { useState, useEffect } from "react";
+
 interface Score {
   playerScore: number[];
   totalScore: number;
+}
+
+interface Throwers {
+  throws: { scores: number[] };
 }
 
 export const Scoreboard: React.FC<Score> = ({
   playerScore,
   totalScore,
 }): JSX.Element => {
+  const [data, setThrows] = useState<Throwers | any>([null]);
+
+  useEffect(() => {
+    fetch("http://localhost:3002/api/throws")
+      .then((res: Response) => res.json())
+      .then((data: Throwers) => setThrows(data.throws));
+  }, []);
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -15,15 +29,14 @@ export const Scoreboard: React.FC<Score> = ({
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  {[...Array(10)].map((_e: number, score: number) => {
+                  {[...data].map((_e: number, throws: number) => {
                     return (
                       <th
-                        key={score}
+                        key={throws + 1}
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        {" "}
-                        P {score + 1}{" "}
+                        T {throws + 1}
                       </th>
                     );
                   })}

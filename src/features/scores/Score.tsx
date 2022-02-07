@@ -1,24 +1,24 @@
 import Button from "@mui/material/Button";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { increaseScoreByAmount } from "./scoreSlice";
 import { Scoreboard } from "../../components/Game/scoreboard";
 import { useState } from "react";
 
-interface ScorePoints {
-  scorePoints: { scores: number[] };
+interface AddScorePoints {
+  addScorePoints: { scores: number[] };
 }
 
 export const AddScore = () => {
   const count = useAppSelector((state) => state.scores.value);
   const dispatch = useAppDispatch();
-  const [data, setScoreData] = useState<ScorePoints | any>([null]);
+  const [data, setScoreData] = useState<AddScorePoints | any>([null]);
   const [playerScoreArray, updatePlayerScoreArray] = useState<number[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3002/api/")
-      .then((res) => res.json())
-      .then((data: ScorePoints) => setScoreData(data.scorePoints));
+    fetch("http://localhost:3002/api/addScorePoints")
+      .then((res: Response) => res.json())
+      .then((data: AddScorePoints) => setScoreData(data.addScorePoints));
   }, []);
 
   const onClick = (score: number) => {
