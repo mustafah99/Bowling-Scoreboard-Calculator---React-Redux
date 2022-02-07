@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 interface Score {
   playerScore: number[];
   totalScore: number;
+  maxPossible: number;
 }
 
 interface Throwers {
@@ -12,6 +13,7 @@ interface Throwers {
 export const Scoreboard: React.FC<Score> = ({
   playerScore,
   totalScore,
+  maxPossible,
 }): JSX.Element => {
   const [data, setThrows] = useState<Throwers | any>([null]);
 
@@ -64,7 +66,7 @@ export const Scoreboard: React.FC<Score> = ({
           HDCP SCORE : {totalScore}
         </p>
         <p className="px-6 py-5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-          MAX POSSIBLE : {300 - totalScore}
+          MAX POSSIBLE : {maxPossible}
         </p>
       </div>
     </div>

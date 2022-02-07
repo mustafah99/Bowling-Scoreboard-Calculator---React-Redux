@@ -3,10 +3,12 @@ import type { RootState } from "../../app/store";
 
 interface ScoreState {
   value: number;
+  maxPossible: number;
 }
 
 const initialState: ScoreState = {
   value: 0,
+  maxPossible: 300,
 };
 
 export const scoreSlice = createSlice({
@@ -14,12 +16,25 @@ export const scoreSlice = createSlice({
   initialState,
   reducers: {
     increaseScoreByAmount: (state, action: PayloadAction<number>) => {
-      if (action.payload === 4) {
-        state.value += 38;
-      } else if (action.payload === 10) {
-        state.value += 30;
-      } else {
-        state.value += action.payload;
+      switch (action.payload) {
+        case 2:
+          state.maxPossible -= 28;
+          break;
+        case 4:
+          state.maxPossible -= 26;
+          break;
+        case 6:
+          state.maxPossible -= 24;
+          break;
+        case 8:
+          state.maxPossible -= 22;
+          break;
+        case 10:
+          state.value += 30;
+          break;
+        default:
+          state.value += action.payload;
+          state.maxPossible -= 10;
       }
     },
   },

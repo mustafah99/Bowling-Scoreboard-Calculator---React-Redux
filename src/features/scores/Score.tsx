@@ -11,6 +11,7 @@ interface AddScorePoints {
 
 export const AddScore = () => {
   const count = useAppSelector((state) => state.scores.value);
+  const maxPossible = useAppSelector((state) => state.scores.maxPossible);
   const dispatch = useAppDispatch();
   const [data, setScoreData] = useState<AddScorePoints | any>([null]);
   const [playerScoreArray, updatePlayerScoreArray] = useState<number[]>([]);
@@ -46,7 +47,11 @@ export const AddScore = () => {
           );
         })}
       </div>
-      <Scoreboard playerScore={playerScoreArray} totalScore={count} />
+      <Scoreboard
+        playerScore={playerScoreArray}
+        totalScore={count}
+        maxPossible={maxPossible}
+      />
     </>
   );
 };
