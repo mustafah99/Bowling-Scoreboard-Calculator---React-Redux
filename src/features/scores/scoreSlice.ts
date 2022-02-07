@@ -17,6 +17,9 @@ export const scoreSlice = createSlice({
   reducers: {
     increaseScoreByAmount: (state, action: PayloadAction<number>) => {
       switch (action.payload) {
+        case 0:
+          state.maxPossible -= 30;
+          break;
         case 1:
           state.value += action.payload;
           state.maxPossible -= 29;
