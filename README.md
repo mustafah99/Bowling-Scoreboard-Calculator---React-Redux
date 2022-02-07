@@ -7,9 +7,13 @@ See project live at:
 
 ## How to Run Locally
 
-To run this project, clone the repository through Git or download the ZIP file provided then open up in a separate Terminal or with Visual Studio Code Integrated Terminal and run:
+To run this project, clone the repository through Git or download the ZIP file provided then open up in a separate Terminal or with Visual Studio Code Integrated Terminal and run two commands separately, one for the source code and one for the server:
 
+For Source Code:
 `npm run start`
+
+For Server:
+`npm run server`
 
 `Note: Node.js is required on machine to run NPM Commands in Terminal. `
 
