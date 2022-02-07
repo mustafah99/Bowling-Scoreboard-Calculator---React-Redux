@@ -61,7 +61,10 @@ export const Scoreboard: React.FC<Score> = ({
       </div>
       <div>
         <p className="px-6 py-5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-          TOTAL : {totalScore}
+          HDCP SCORE : {totalScore}
+        </p>
+        <p className="px-6 py-5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+          MAX POSSIBLE : {300 - totalScore}
         </p>
       </div>
     </div>
