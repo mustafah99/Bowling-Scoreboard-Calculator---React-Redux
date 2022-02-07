@@ -10,12 +10,12 @@ export const AddScore = () => {
   const dispatch = useAppDispatch();
   const [playerScoreArray, updatePlayerScoreArray] = useState<number[]>([]);
 
-  const onClick = (i: number) => {
+  const onClick = (score: number) => {
     if (playerScoreArray.length < 10) {
-      dispatch(increaseScoreByAmount(i + 1));
+      dispatch(increaseScoreByAmount(score + 1));
       updatePlayerScoreArray((playerScoreArray) => [
         ...playerScoreArray,
-        i + 1,
+        score + 1,
       ]);
     }
   };
@@ -23,10 +23,14 @@ export const AddScore = () => {
   return (
     <>
       <div className="py-5">
-        {[...Array(10)].map((e: number, i: number) => {
+        {[...Array(10)].map((_e: number, score: number) => {
           return (
-            <Button onClick={() => onClick(i)} variant="outlined" key={i + 1}>
-              {i + 1}
+            <Button
+              onClick={() => onClick(score)}
+              variant="outlined"
+              key={score + 1}
+            >
+              {score + 1}
             </Button>
           );
         })}
